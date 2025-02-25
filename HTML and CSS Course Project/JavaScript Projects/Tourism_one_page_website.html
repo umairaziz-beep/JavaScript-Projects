@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Explore Edmonton</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f5f5f5;
+            margin: 0;
+            padding: 0;
+        }
+        header {
+            background-color: #2196F3;
+            color: white;
+            padding: 15px 0;
+            text-align: center;
+        }
+        nav {
+            display: flex;
+            justify-content: center;
+            background-color: #333;
+        }
+        nav a {
+            color: white;
+            padding: 15px 20px;
+            text-decoration: none;
+        }
+        nav a:hover {
+            background-color: #575757;
+        }
+        main {
+            padding: 20px;
+        }
+        .container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-around;
+        }
+        .card {
+            background-color: white;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            margin: 10px;
+            padding: 15px;
+            width: 30%;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        .card img {
+            width: 100%;
+            border-radius: 8px 8px 0 0;
+        }
+        .card h3 {
+            margin-top: 0;
+        }
+        footer {
+            background-color: #2196F3;
+            color: white;
+            text-align: center;
+            padding: 10px 0;
+            position: fixed;
+            width: 100%;
+            bottom: 0;
+        }
+		document.addEventListener('DOMContentLoaded', () => {
+    const galleryItems = document.querySelectorAll('.gallery-item');
+    const lightbox = document.getElementById('lightbox');
+    const lightboxImg = document.getElementById('lightbox-img');
+    const close = document.querySelector('.close');
+
+    galleryItems.forEach(item => {
+        item.addEventListener('click', () => {
+            lightbox.style.display = 'flex';
+            lightboxImg.src = item.src;
+        });
+    });
+
+    close.addEventListener('click', () => {
+        lightbox.style.display = 'none';
+    });
+
+    lightbox.addEventListener('click', (e) => {
+        if (e.target === lightboxImg) {
+            return;
+        }
+        lightbox.style.display = 'none';
+    });
+});
+
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Welcome to Edmonton</h1>
+        <p>Discover the beauty and adventure of Edmonton</p>
+    </header>
+    <nav>
+        <a href="#attractions">Attractions</a>
+        <a href="#activities">Activities</a>
+        <a href="#accommodations">Accommodations</a>
+        <a href="#contact">Contact</a>
+    </nav>
+    <main>
+        <section id="attractions">
+            <h2>Top Attractions</h2>
+            <div class="container">
+                <div class="card">
+                    <img src="Tourism/image-1.jpg" alt="">
+                    <h3>Attraction 1</h3>
+                    <p>Description of attraction 1.</p>
+                </div>
+                <div class="card">
+                    <img src="Tourism/image-2.jpg" alt="">
+                    <h3>Attraction 2</h3>
+                    <p>Description of attraction 2.</p>
+                </div>
+                <div class="card">
+                    <img src="Tourism/image-3.jpg" alt="">
+                    <h3>Attraction 3</h3>
+                    <p>Description of attraction 3.</p>
+                </div>
+            </div>
+			<div class="row">
+  <div class="column">
+    <img src="Tourism/image-4.jpg" onclick="openModal();currentSlide(1)" class="hover-shadow">
+  </div>
+  <div class="column">
+    <img src="Tourism/image-5.jpg" onclick="openModal();currentSlide(2)" class="hover-shadow">
+  </div>
+  <div class="column">
+    <img src="Tourism/image-6.jpg" onclick="openModal();currentSlide(3)" class="hover-shadow">
+  </div>
+  <div class="column">
+    <img src="Tourism/image-2.jpg" onclick="openModal();currentSlide(4)" class="hover-shadow">
+  </div>
+</div>
+
+<!-- The Modal/Lightbox -->
+<div id="myModal" class="modal">
+  <span class="close cursor" onclick="closeModal()">&times;</span>
+  <div class="modal-content">
+
+    <div class="mySlides">
+      <div class="numbertext">1 / 4</div>
+      <img src="Tourism/image-4.jpg" style="width:100%">
+    </div>
+
+    <div class="mySlides">
+      <div class="numbertext">2 / 4</div>
+      <img src="Tourism/image-5.jpg" style="width:100%">
+    </div>
+
+    <div class="mySlides">
+      <div class="numbertext">3 / 4</div>
+      <img src="Tourism/image-6.jpg" style="width:100%">
+    </div>
+
+    <div class="mySlides">
+      <div class="numbertext">4 / 4</div>
+      <img src="Tourism/image-2" style="width:100%">
+    </div>
+
+    <!-- Next/previous controls -->
+    <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+    <a class="next" onclick="plusSlides(1)">&#10095;</a>
+
+    <!-- Caption text -->
+    <div class="caption-container">
+      <p id="caption"></p>
+    </div>
+
+    <!-- Thumbnail image controls -->
+    <div class="column">
+      <img class="demo" src="Tourism/image-1.jpg" onclick="currentSlide(1)" alt="Nature">
+    </div>
+
+    <div class="column">
+      <img class="demo" src="Tourism/image-2.jpg" onclick="currentSlide(2)" alt="Snow">
+    </div>
+
+    <div class="column">
+      <img class="demo" src="Tourism/image-3.jpg" onclick="currentSlide(3)" alt="Mountains">
+    </div>
+
+    <div class="column">
+      <img class="demo" src="Tourism/image-4.jpg" onclick="currentSlide(4)" alt="Lights">
+    </div>
+    </div>
+    <div id="lightbox" class="lightbox">
+        <span class="close">&times;</span>
+        <img class="lightbox-content" id="lightbox-img">
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
+
+        </section>
+        <section id="activities">
+            <h2>Exciting Activities</h2>
+            <p>Details about various activities in Edmonton.</p>
+        </section>
+        <section id="accommodations">
+            <h2>Comfortable Accommodations</h2>
+            <p>Information about hotels and other accommodations.</p>
+        </section>
+        <section id="contact">
+            <h2>Contact Us</h2>
+            <p>Contact details and form for inquiries.</p>
+        </section>
+    </main>
+    <footer>
+        <p>© 2025 Explore Edmonton</p>
+    </footer>
+</body>
+</html>
+
